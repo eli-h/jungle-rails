@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <section class="orders-show">
+
+      <header class="page-header">
+        <h1>Order #<%= @order.id %></h1>
+      </header>
+
+      <div class="order-summary jumbotron">
+        <h4>Thank you for your order!</h4>
+        <% @order_products.each do |p| %>
+          <article>
+            <li>
+              <img src="<%= p[0].image %>" height="30" width="30"><%= p[0].name %>
+                - Quantity: <%= p[1] %>
+                | Total: $<%= Money.new(p[2])%>
+            </li>
+            <ul> 
+              <%= p[0].description %>
+            </ul>
+            </article>
+        <% end %>
+        <li>Order Total: $<%= Money.new(@order.total_cents)  %></li>
+        <li><%= @order.email %></li>
+      </div>
+
+    </section>
+  </body>
+</html>

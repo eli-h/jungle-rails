@@ -9,12 +9,12 @@
     <% @order_products.each do |p| %>
       <article>
         <li>
-          <img src="<%= p.image %>" height="30" width="30"><%= p.name %>
-          - Quantity: <%= @line_item[:quantity]%>
-          | Total: <%= Money.new(@line_item[:total_price_cents])%>
+          <img src="<%= p[0].image %>" height="30" width="30"><%= p[0].name %>
+            - Quantity: <%= p[1] %>
+            | Total: $<%= Money.new(p[2])%>
         </li>
         <ul> 
-          <%= p.description %>
+          <%= p[0].description %>
         </ul>
         </article>
     <% end %>
