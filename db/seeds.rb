@@ -162,4 +162,12 @@ Review.create!({
  rating: 4
 })
 
+puts 'Create User'
+
+User.create!({
+  name: 'Ugly God',
+  email: 'bhavisugly@waste.man',
+  password_digest: '$2a$10$EwCdZU.6orm0UHW3glonuuZhtN6Ongu7OObvXhSNKe8PcYWs9nB.i'
+  })
+
 puts "DONE!"
