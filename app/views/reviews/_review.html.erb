@@ -1,0 +1,13 @@
+<div>
+  <p><%= review.user_id %>:</p>
+  <p><%= review.description %></p>
+  <p>rating: <%= review.rating %></p>
+  <% if !current_user %>
+	<% else current_user.name.to_s == review.user_id.to_s %>
+
+	  <%= button_to 'Destroy Review', [@product, review],
+	             method: :delete,
+	             data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'%>
+	<%end%>
+
+</div>

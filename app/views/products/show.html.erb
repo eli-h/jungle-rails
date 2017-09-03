@@ -26,24 +26,11 @@
       </div>
     </div>
 
-    <div class="col-sm-8">
-    <h3>Reviews</h3>
-    <% @product.reviews.each do |r| %>
-      <dl class="dl-horizontal">
-        <dt>Name</dt>
-        <dd><%= r.user_id %></dd>
-        <dt>Description</dt>
-        <dd><%= r.description %></dd>
-        <dt>Rating</dt>
-        <dd><%= r.rating %></dd>
-        <dt>Posted At</dt>
-        <dd><%= r.created_at %></dd>
-      </dl>
-    <% end %>
     </div>
 
-    </div>
-    <section class="admin-categories-new">
+    <% if current_user %>
+
+    <section class="new-review">
 
       <div class="row">
         <div class="col-sm-6 col-sm-offset-1">
@@ -73,11 +60,17 @@
 
             <%= form.submit 'Create Review', class: 'btn btn-primary' %>
           <% end %>
+
         </div>
       </div>
 
     </section>
+    <% end %>
 
+    <div class="row">
+    <%= render @product.reviews.order('created_at DESC') %>
+    </div>
+    
   </article>
 
 </section>
